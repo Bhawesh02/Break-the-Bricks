@@ -13,6 +13,6 @@ public class BallTrowController : MonoBehaviour
         GameObject NewBall=Instantiate(Ball,transform.position,Ball.transform.rotation);
         Vector2 ReleaseVector = Quaternion.Euler(0, 0, releaseAngle) * Vector2.right; 
         NewBall.GetComponent<Rigidbody2D>().velocity = ReleaseVector * speed;
-        Debug.Log(NewBall.GetComponent<Rigidbody2D>().velocity);
+        
     }    
 }

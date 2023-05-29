@@ -20,12 +20,10 @@ public class BallController : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Wall"))
         {
-            Debug.Log(lastVelocity);
             float speed = lastVelocity.magnitude;
             Vector2 direction = Vector2.Reflect(lastVelocity.normalized,collision.GetContact(0).normal);
             rb.velocity = direction * speed;
-            Debug.Log(rb.velocity);
-
+           
         }
 
     }
