@@ -18,13 +18,11 @@ public class BallController : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.gameObject.CompareTag("Wall"))
-        {
+        
             float speed = lastVelocity.magnitude;
             Vector2 direction = Vector2.Reflect(lastVelocity.normalized,collision.GetContact(0).normal);
             rb.velocity = direction * speed;
-           
-        }
+         
 
     }
 }
