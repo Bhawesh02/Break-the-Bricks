@@ -22,8 +22,8 @@ public class BallController : MonoBehaviour
         {
             Debug.Log(lastVelocity);
             float speed = lastVelocity.magnitude;
-            Vector2 direction = Vector2.Reflect(lastVelocity.normalized,collision.contacts[0].normal);
-            rb.velocity = direction * Mathf.Max(speed, 5f);
+            Vector2 direction = Vector2.Reflect(lastVelocity.normalized,collision.GetContact(0).normal);
+            rb.velocity = direction * speed;
             Debug.Log(rb.velocity);
 
         }
