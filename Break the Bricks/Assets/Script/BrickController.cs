@@ -8,10 +8,14 @@ public class BrickController : MonoBehaviour
     private int health;
     [SerializeField]
     private TextMeshPro healthText;
-
+    private void Awake()
+    {
+        health = Random.Range(1,50);
+    }
     private void Start()
     {
         healthText.text = "" + health;
+        GameManager.Instance.Bricks.Add(this);
     }
     private void ReduceHealth()
     {
@@ -30,5 +34,9 @@ public class BrickController : MonoBehaviour
             return;
         
         ReduceHealth();
+    }
+    private void OnDestroy()
+    {
+        GameManager.Instance.Bricks.Remove(this);
     }
 }
