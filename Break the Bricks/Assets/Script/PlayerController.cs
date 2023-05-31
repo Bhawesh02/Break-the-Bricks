@@ -16,11 +16,16 @@ public class PlayerController : MonoBehaviour
     private GameObject leftCollider;
     [SerializeField]
     private GameObject rightCollider;
+    public uint MaxNumOfBalls = 100;
+    [HideInInspector]
+    public uint NumOfBallsAvailable;
+    
     private float nextFireTime;
     private void Awake()
     {
         CanGoLeft = true;
         CanGoRight = true;
+        NumOfBallsAvailable = MaxNumOfBalls;
     }
     private void Start()
     {
@@ -36,14 +41,15 @@ public class PlayerController : MonoBehaviour
     void Update()
     {
         PlayerMovement();
-        BallFire();
+        FireBall();
     }
 
-    private void BallFire()
+    private void FireBall()
     {
-        if (Input.GetMouseButton(0) && Time.time >= nextFireTime)
+        if (Input.GetMouseButton(0) && Time.time >= nextFireTime && (NumOfBallsAvailable != 0))
         {
             trowController.SpawnBall(arrow.Angle);
+            NumOfBallsAvailable--;
             nextFireTime = Time.time + fireRate;
         }
     }

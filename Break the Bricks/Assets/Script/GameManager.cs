@@ -22,7 +22,10 @@ public class GameManager : MonoBehaviour
             Destroy(gameObject);
         }
     }
-
+    private void Start()
+    {
+        Screen.SetResolution(1920, 1080, true);
+    }
     private void Update()
     {
         if (Bricks.Count == 0)
