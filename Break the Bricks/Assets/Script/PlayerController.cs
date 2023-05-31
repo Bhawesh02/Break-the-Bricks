@@ -17,7 +17,6 @@ public class PlayerController : MonoBehaviour
     [SerializeField]
     private GameObject rightCollider;
     public uint MaxNumOfBalls = 100;
-    [HideInInspector]
     public uint NumOfBallsAvailable;
     
     private float nextFireTime;
