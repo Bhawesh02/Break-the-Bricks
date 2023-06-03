@@ -11,10 +11,15 @@ public class BallController : MonoBehaviour
     {
         rb = GetComponent<Rigidbody2D>();
     }
+    private void Start()
+    {
+        GameManager.Instance.NumOfBallsInScene++;
+    }
     private void Update()
     {
         lastVelocity = rb.velocity;
     }
+
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
@@ -23,6 +28,11 @@ public class BallController : MonoBehaviour
             Vector2 direction = Vector2.Reflect(lastVelocity.normalized,collision.GetContact(0).normal);
             rb.velocity = direction * speed;
          
+
+    }
+    private void OnDestroy()
+    {
+        GameManager.Instance.NumOfBallsInScene--;
 
     }
 }

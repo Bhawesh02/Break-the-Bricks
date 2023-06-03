@@ -1,5 +1,6 @@
 public enum ButtonType
 {
     Replay,
-    Continue
+    Continue,
+    ReturnToLobby
 }

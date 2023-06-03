@@ -15,7 +15,13 @@ public class GameManager : MonoBehaviour
     [SerializeField]
     private GameObject LevelCompleteScreen;
 
-    public bool GameOver = false;
+    public bool GameLost;
+
+    public bool LevelComplete;
+
+    public int NumOfBallsInScene;
+
+    public GameObject gameOverGameObject;
 
     private void Awake()
     {
@@ -28,6 +34,10 @@ public class GameManager : MonoBehaviour
             Destroy(gameObject);
         }
         LevelCompleteScreen.SetActive(false);
+        gameOverGameObject.SetActive(false);
+        GameLost = false;
+        LevelComplete = false;
+        NumOfBallsInScene = 0;
     }
     private void Start()
     {
@@ -37,11 +47,22 @@ public class GameManager : MonoBehaviour
     {
         if (Bricks.Count == 0)
             LevelCompleted();
+        if(playerController.NumOfBallsAvailable == 0 && NumOfBallsInScene == 0 && !LevelComplete)
+        {
+            GameOver();
+        }
+    }
+
+    private void GameOver()
+    {
+        GameLost = true;
+        playerController.enabled = false;
+        gameOverGameObject.SetActive(true);
     }
 
     private void LevelCompleted()
     {
-        GameOver = true;
+        LevelComplete = true;
         playerController.enabled = false;
         LevelCompleteScreen.SetActive(true);
     }

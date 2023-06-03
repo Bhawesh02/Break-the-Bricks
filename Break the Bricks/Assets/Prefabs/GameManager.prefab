@@ -45,4 +45,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Bricks: []
-  GameOver: 0
+  playerController: {fileID: 0}
+  LevelCompleteScreen: {fileID: 0}
+  GameLost: 0
+  LevelComplete: 0
+  NumOfBallsInScene: 0
+  gameOverGameObject: {fileID: 0}

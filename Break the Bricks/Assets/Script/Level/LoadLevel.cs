@@ -32,6 +32,8 @@ public class LoadLevel : MonoBehaviour
                 int CurrentSceneIndex = SceneManager.GetActiveScene().buildIndex;
                 SceneManager.LoadScene(CurrentSceneIndex + 1);
                 break;
+            default:
+                break;
         }
     }
 }
