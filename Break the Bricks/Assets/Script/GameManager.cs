@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
@@ -33,14 +34,18 @@ public class GameManager : MonoBehaviour
         {
             Destroy(gameObject);
         }
-        LevelCompleteScreen.SetActive(false);
-        gameOverGameObject.SetActive(false);
         GameLost = false;
         LevelComplete = false;
         NumOfBallsInScene = 0;
+        PlayerPrefs.SetInt("LastLevel",SceneManager.GetActiveScene().buildIndex);
     }
     private void Start()
     {
+
+        LevelCompleteScreen.SetActive(false);
+        gameOverGameObject.SetActive(false);
+
+
         Screen.SetResolution(1920, 1080, true);
     }
     private void Update()

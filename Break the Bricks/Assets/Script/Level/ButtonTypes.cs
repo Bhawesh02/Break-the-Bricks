@@ -1,6 +1,9 @@
 public enum ButtonType
 {
     Replay,
+    Next,
+    ReturnToLobby,
     Continue,
-    ReturnToLobby
+    SelectLevel,
+    LoadLevel
 }

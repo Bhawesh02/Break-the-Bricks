@@ -10,6 +10,7 @@ public class LoadLevel : MonoBehaviour
     [SerializeField]
     private ButtonType type;
     private Button button;
+    public int LevelToLoad;
     private void Awake()
     {
         button = GetComponent<Button>();
@@ -28,12 +29,16 @@ public class LoadLevel : MonoBehaviour
             case ButtonType.Replay:
                 SceneManager.LoadScene(SceneManager.GetActiveScene().name);
                 break;
-            case ButtonType.Continue:
+            case ButtonType.Next:
                 int CurrentSceneIndex = SceneManager.GetActiveScene().buildIndex;
                 SceneManager.LoadScene(CurrentSceneIndex + 1);
+                break;
+            case ButtonType.LoadLevel:
+                    SceneManager.LoadScene(LevelToLoad);
                 break;
             default:
                 break;
         }
     }
+
 }
