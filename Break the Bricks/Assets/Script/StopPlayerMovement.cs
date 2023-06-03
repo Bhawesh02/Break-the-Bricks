@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class StopMovement : MonoBehaviour
+public class StopPlayerMovement : MonoBehaviour
 {
     public PlatformCollider platformCollider;
     public PlayerController playerController;

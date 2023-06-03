@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
+    private static PlayerController instance;
+
     public float speed = 5f;
     public float fireRate = 0.25f;
     public bool CanGoLeft;
@@ -22,17 +24,26 @@ public class PlayerController : MonoBehaviour
     private float nextFireTime;
     private void Awake()
     {
+        if (instance == null)
+        {
+            instance = this;
+        }
+        else
+        {
+            Destroy(gameObject);
+        }
         CanGoLeft = true;
         CanGoRight = true;
         NumOfBallsAvailable = MaxNumOfBalls;
     }
     private void Start()
     {
+        GameManager.Instance.playerController = this;
         nextFireTime = Time.time;
-        StopMovement left = leftCollider.GetComponent<StopMovement>();
+        StopPlayerMovement left = leftCollider.GetComponent<StopPlayerMovement>();
         left.platformCollider = PlatformCollider.Left;
         left.playerController = this;
-        StopMovement right = rightCollider.GetComponent<StopMovement>();
+        StopPlayerMovement right = rightCollider.GetComponent<StopPlayerMovement>();
         right.platformCollider = PlatformCollider.Right;
         right.playerController = this;
 

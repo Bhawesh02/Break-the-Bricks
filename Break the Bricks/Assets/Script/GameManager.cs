@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -8,6 +9,11 @@ public class GameManager : MonoBehaviour
     public static GameManager Instance { get { return instance; } }
 
     public List<BrickController> Bricks;
+
+    public PlayerController playerController;
+
+    [SerializeField]
+    private GameObject LevelCompleteScreen;
 
     public bool GameOver = false;
 
@@ -21,6 +27,7 @@ public class GameManager : MonoBehaviour
         {
             Destroy(gameObject);
         }
+        LevelCompleteScreen.SetActive(false);
     }
     private void Start()
     {
@@ -29,7 +36,13 @@ public class GameManager : MonoBehaviour
     private void Update()
     {
         if (Bricks.Count == 0)
-            GameOver = true;
+            LevelCompleted();
     }
 
+    private void LevelCompleted()
+    {
+        GameOver = true;
+        playerController.enabled = false;
+        LevelCompleteScreen.SetActive(true);
+    }
 }
