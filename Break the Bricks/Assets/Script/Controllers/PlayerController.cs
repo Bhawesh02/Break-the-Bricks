@@ -18,9 +18,9 @@ public class PlayerController : MonoBehaviour
     private GameObject leftCollider;
     [SerializeField]
     private GameObject rightCollider;
-    public uint MaxNumOfBalls = 100;
+    public uint MaxNumOfBalls;
     public uint NumOfBallsAvailable;
-    
+ 
     private float nextFireTime;
     private void Awake()
     {

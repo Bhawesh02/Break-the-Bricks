@@ -2594,6 +2594,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1237853416, guid: 9fc7af672749b7c48b0584908c88a7db, type: 3}
+      propertyPath: platformCollider
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 872151076695048641, guid: 9fc7af672749b7c48b0584908c88a7db, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0.06
